@@ -1,4 +1,4 @@
-#WELCOME TO DELTALOGGER!
+# WELCOME TO DELTALOGGER!
 
 # Libraries
 
@@ -147,4 +147,4 @@ for file in delete_files:
 # Developed by @Degnato
 # Still in developing
 
-#GOODBYE BY DELTALOGGER!
+# GOODBYE BY DELTALOGGER!
