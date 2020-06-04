@@ -2,7 +2,7 @@
 
 ## Very simple pyw script! Only needs pynput installed!
 
-### Download the script and edit it as you prefer!
+## Download the script and edit it as you prefer!
 
 ## Use pyinstaller to make it executable!
 
