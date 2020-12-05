@@ -30,9 +30,8 @@
 
 ## 8) Done!
 
-# ❤️Made by @Degnato❤️
+# ❤️Made by @Alphvino❤️
 
 ## **`FREE PRODUCT - You are not authorized to resell this product as a product developed by yourself.`**
-### ⛈ [Telegram Channel](https://t.me/DegnatoDev) ⛈
 
-### 👨‍💻 [Telegram Contact](https://t.me/Degnato) 👨‍💻
+### 👨‍💻 [Telegram Contact](https://t.me/uraele) 👨‍💻
